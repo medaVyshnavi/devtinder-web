@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux"
 import { addUser } from "../app/userSlice"
+import {BASE_URL} from "../utils/constants"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post("http://localhost:3001/login",
+      const response = await axios.post(BASE_URL+"/login",
         { email: email, password: password },
         { withCredentials : true }
       );
@@ -24,7 +25,7 @@ const Login = () => {
         navigate("/feed")
       }
     } catch (error) {
-      alert(error.response.data);
+      // alert(error.response.data);
       console.log(error.response.data)
     }
   } 
