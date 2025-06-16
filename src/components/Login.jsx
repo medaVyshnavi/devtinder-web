@@ -9,8 +9,8 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState("Himanshu@gmail.com");
-  const [password, setPassword] = useState("Himanshu16()");
+  const [email, setEmail] = useState("surya@gmail.com");
+  const [password, setPassword] = useState("Surya16()");
   
   const handleSubmit = async (e) => {
     try {
@@ -37,7 +37,7 @@ const Login = () => {
           <legend className="fieldset-legend">Email </legend>
           <input
             value={email}
-            onChange={() => setEmail(email)}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
             className="input"
             placeholder="example@gmail.com"
@@ -50,7 +50,7 @@ const Login = () => {
             className="input"
             placeholder="Password"
             value={password}
-            onChange={() => setPassword(email)}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </fieldset>
         <div className="card-actions justify-center mt-5 mr-4">
