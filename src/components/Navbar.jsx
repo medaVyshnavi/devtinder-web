@@ -51,7 +51,10 @@ const Navbar = () => {
               <Link to="profile">Profile</Link>
             </li>
             <li>
-              <a onClick={() => handleLogout()}>Logout</a>
+              <Link to="connections">Connections</Link>
+            </li>
+            <li>
+              <Link onClick={() => handleLogout()}>Logout</Link>
             </li>
           </ul>
         </div>

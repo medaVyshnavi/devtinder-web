@@ -21,9 +21,13 @@ const EditProfile = ({ user }) => {
     setUserProfile({ ...userProfile, [name]: value });
   };
 
-  const handleSubmit = async() => {
-    const response = await axios.patch(BASE_URL + "/profile/edit", { firstName:userProfile.firstName,lastName:userProfile.lastName, age:userProfile.age, about:userProfile.about, photoURL:userProfile.photoURL, gender:userProfile.gender }, { withCredentials: true })
-    dispatch(addUser(response.data.data))
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.patch(BASE_URL + "/profile/edit", { firstName:userProfile.firstName,lastName:userProfile.lastName, age:userProfile.age, about:userProfile.about, photoURL:userProfile.photoURL, gender:userProfile.gender }, { withCredentials: true })
+      dispatch(addUser(response.data.data))
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
