@@ -9,8 +9,8 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState("surya@gmail.com");
-  const [password, setPassword] = useState("Surya16()");
+  const [email, setEmail] = useState("Vyshnavi@gmail.com");
+  const [password, setPassword] = useState("Vyshnavi16&*");
   
   const handleSubmit = async (e) => {
     try {

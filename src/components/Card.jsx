@@ -10,7 +10,7 @@ const Card = ({ user }) => {
       </figure>
       <div className="card-body items-center text-center">
         <h2 className="card-title">{firstName} {lastName}</h2>
-        <h3>{gender.toUpperCase()} { age}</h3>
+        <h3>{gender?.toUpperCase()} { age}</h3>
         <p>{about}</p>
         <div className="card-actions">
           <button className="btn btn-primary">Ignore</button>
