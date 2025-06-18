@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addRequests } from "../app/requestSlice";
+import { addRequests, removeRequest } from "../app/requestSlice";
 import axios from "axios";
 
 const Requests = () => {
@@ -19,6 +19,19 @@ const Requests = () => {
     }
   };
 
+  const handleReviewRequest = async (e, status, requestId) => {
+    try {
+      e.preventDefault();
+      const response = await axios.post(BASE_URL + "/request/review/" + status + "/" + requestId, {},{withCredentials:true});
+      alert(response.data.message);
+      // either refetch the requests api call or remove the user from the store. 
+      // fetchRequests();
+      dispatch(removeRequest(requestId))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
    useEffect(() => {
       fetchRequests();
    }, [])
@@ -35,6 +48,8 @@ const Requests = () => {
         {requests.map((request) => {
           const { _id, firstName, lastName, age, gender, photoURL, about } =
             request.fromUserId;
+          
+          const {_id : requestId} = request 
 
           return (
             <div
@@ -58,8 +73,18 @@ const Requests = () => {
                 <p>{about}</p>
               </div>
               <div>
-                <button className="btn btn-primary mx-3">Primary</button>
-                <button className="btn btn-secondary mx-3">Secondary</button>
+                <button
+                  className="btn btn-primary mx-3"
+                  onClick={(e) => handleReviewRequest(e, "rejected",requestId)}
+                >
+                  Ignore
+                </button>
+                <button
+                  className="btn btn-secondary mx-3"
+                  onClick={(e) => handleReviewRequest(e, "accepted",requestId)}
+                >
+                  Accept
+                </button>
               </div>
             </div>
           );
@@ -70,3 +95,5 @@ const Requests = () => {
 }
 
 export default Requests
+
+// /review/:status/:requestId
