@@ -18,11 +18,14 @@ const Feed = () => {
     fetchFeedData();
   }, [])
 
-  return feed && (
-    <div className='flex justify-center items-center m-4'>
-      <Card user={feed[0] } />
-    </div>
-  )
+  if(!feed || feed.length === 0) return <div className='flex justify-center my-10'>No feed found</div>
+  return (
+    feed && (
+      <div className="flex justify-center items-center m-4">
+        {feed.length > 0 && <Card user={feed[0]} />}
+      </div>
+    )
+  );
 }
 
 export default Feed
