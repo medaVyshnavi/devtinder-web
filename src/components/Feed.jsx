@@ -36,7 +36,9 @@ const Feed = () => {
     fetchFeedData();
   }, [])
 
-  if(!feed || feed.length === 0) return <div className='flex justify-center my-10'>No feed found</div>
+  if (!feed) return <div className='flex justify-center my-10'>Loading...</div>
+  
+  if(feed.length === 0) return <div className="flex justify-center my-10">No Feed found</div>;
   return (
     <>
       {feed && (
