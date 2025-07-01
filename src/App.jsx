@@ -5,19 +5,21 @@ import Profile from "./components/Profile"
 import Feed from "./components/Feed";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
+import Premium from "./components/Premium";
 
 function App() {
   return (
     <>
       <BrowserRouter basename="/">
         <Routes>
-          <Route path="/" element={<Navigate to="/login" />}/>
+          <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Login />} />
           <Route path="/feed" element={<Body />}>
             <Route path="" element={<Feed />} />
             <Route path="profile" element={<Profile />} />
             <Route path="connections" element={<Connections />} />
+            <Route path="premium" element={<Premium />} />
             <Route path="requests" element={<Requests />} />
           </Route>
         </Routes>
